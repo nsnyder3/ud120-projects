@@ -24,18 +24,20 @@ from timer import Timer
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
-
+# features_train = features_train[:len(features_train)/100] 
+# labels_train = labels_train[:len(labels_train)/100] 
 
 #########################################################
-clf = svm.SVC(kernel='linear')
-with Timer('training'):
-    clf.fit(features_train, labels_train)
+for c in [10000]:
+    print 'With C: {}'.format(c)
+    clf = svm.SVC(kernel='rbf', C=c)
+    with Timer('training'):
+        clf.fit(features_train, labels_train)
 
-with Timer('predicting'):
-    pred = clf.predict(features_test)
+    with Timer('predicting'):
+        pred = clf.predict(features_test)
 
-score = accuracy_score(labels_test, pred)
-print score
+    print accuracy_score(labels_test, pred)
 
 #########################################################
 
