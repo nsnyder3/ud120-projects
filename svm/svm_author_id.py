@@ -9,9 +9,13 @@
 """
     
 import sys
-from time import time
+
+from sklearn import svm
+from sklearn.metrics import accuracy_score
+
 sys.path.append("../tools/")
 from email_preprocess import preprocess
+from timer import Timer
 
 
 ### features_train and features_test are the features for the training
@@ -23,7 +27,15 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 
 #########################################################
-### your code goes here ###
+clf = svm.SVC(kernel='linear')
+with Timer('training'):
+    clf.fit(features_train, labels_train)
+
+with Timer('predicting'):
+    pred = clf.predict(features_test)
+
+score = accuracy_score(labels_test, pred)
+print score
 
 #########################################################
 
