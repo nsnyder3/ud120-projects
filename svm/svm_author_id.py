@@ -28,16 +28,17 @@ features_train, features_test, labels_train, labels_test = preprocess()
 # labels_train = labels_train[:len(labels_train)/100] 
 
 #########################################################
-for c in [10000]:
-    print 'With C: {}'.format(c)
-    clf = svm.SVC(kernel='rbf', C=c)
-    with Timer('training'):
-        clf.fit(features_train, labels_train)
+c = 10000
+print 'With C: {}'.format(c)
+clf = svm.SVC(kernel='rbf', C=c)
+with Timer('training'):
+    clf.fit(features_train, labels_train)
 
-    with Timer('predicting'):
-        pred = clf.predict(features_test)
+with Timer('predicting'):
+    pred = clf.predict(features_test)
 
-    print accuracy_score(labels_test, pred)
+print '# of Chris emails: {}'.format(sum(pred))
+print accuracy_score(labels_test, pred)
 
 #########################################################
 
