@@ -29,3 +29,7 @@ print len([True for person in enron_data.values() if person['poi']])
 
 print 'What is the total value of the stock belonging to James Prentice?'
 print enron_data['PRENTICE JAMES']['total_stock_value']
+
+
+print 'How many email messages do we have from Wesley Colwell to persons of interest?'
+print enron_data['COLWELL WESLEY']['from_this_person_to_poi']
