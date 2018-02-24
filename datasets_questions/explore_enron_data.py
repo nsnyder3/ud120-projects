@@ -26,3 +26,6 @@ print 'For each person, how many features are available?'
 print len(enron_data.values()[0])
 print 'How many POIs are there in the E+F dataset?'
 print len([True for person in enron_data.values() if person['poi']])
+
+print 'What is the total value of the stock belonging to James Prentice?'
+print enron_data['PRENTICE JAMES']['total_stock_value']
