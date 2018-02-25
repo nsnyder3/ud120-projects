@@ -43,3 +43,10 @@ who took home the most money (largest value of "total_payments" feature)?
 How much money did that person get?"""
 people = ['LAY KENNETH L', 'FASTOW ANDREW S', 'SKILLING JEFFREY K']
 print ['{}: {}'.format(name, enron_data[name]["total_payments"]) for name in people]
+
+print 'How many folks in this dataset have a quantified salary?'
+def with_feature(feature):
+    return lambda x: x[feature] != 'NaN'
+print len(filter(with_feature('salary'), enron_data.values()))
+print 'What about a known email address?'
+print len(filter(with_feature('email_address'), enron_data.values()))
