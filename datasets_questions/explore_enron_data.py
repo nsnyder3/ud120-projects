@@ -67,3 +67,12 @@ pois = filter(lambda x: x['poi'], enron_data.values())
 print len(filter(without_feature('total_payments'), pois))
 print "What percentage of POI's as a whole is this?"
 print len(filter(without_feature('total_payments'), pois))/len(pois)
+
+print "What is the new number of people of the dataset?"
+original = enron_data.values()
+new = [{'total_payments': 'NaN', 'poi': True} for _ in range(10)]
+data = new + original
+print len(data)
+print "What is the new number of folks with 'NaN' for total payments?"
+print len(filter(without_feature('total_payments'), data))
+
