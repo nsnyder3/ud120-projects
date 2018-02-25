@@ -60,3 +60,10 @@ print len(filter(without_feature('total_payments'), enron_data.values()))
 
 print 'What percentage of people in the dataset as a whole is this?'
 print float(len(filter(without_feature('total_payments'), enron_data.values())))/len(enron_data.values())
+
+
+print "How many POIs in the E+F dataset have 'NaN' for their total payments?"
+pois = filter(lambda x: x['poi'], enron_data.values())
+print len(filter(without_feature('total_payments'), pois))
+print "What percentage of POI's as a whole is this?"
+print len(filter(without_feature('total_payments'), pois))/len(pois)
