@@ -19,6 +19,12 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+def with_feature(feature):
+    return lambda x: x[feature] != 'NaN'
+
+def without_feature(feature):
+    return lambda x: x[feature] == 'NaN'
+
 
 print 'How many people are in the dataset?'
 print len(enron_data.keys())
@@ -45,8 +51,12 @@ people = ['LAY KENNETH L', 'FASTOW ANDREW S', 'SKILLING JEFFREY K']
 print ['{}: {}'.format(name, enron_data[name]["total_payments"]) for name in people]
 
 print 'How many folks in this dataset have a quantified salary?'
-def with_feature(feature):
-    return lambda x: x[feature] != 'NaN'
 print len(filter(with_feature('salary'), enron_data.values()))
 print 'What about a known email address?'
 print len(filter(with_feature('email_address'), enron_data.values()))
+
+print "How many people in the E+F dataset (as it currently exists) have 'NaN' for their total payments?"
+print len(filter(without_feature('total_payments'), enron_data.values()))
+
+print 'What percentage of people in the dataset as a whole is this?'
+print float(len(filter(without_feature('total_payments'), enron_data.values())))/len(enron_data.values())
