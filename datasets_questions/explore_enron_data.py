@@ -76,3 +76,9 @@ print len(data)
 print "What is the new number of folks with 'NaN' for total payments?"
 print len(filter(without_feature('total_payments'), data))
 
+print "What is the new number of POI's in the dataset?"
+pois = filter(lambda x: x['poi'], data)
+print len(pois)
+print "What is the new number of POI's with NaN for total_payments?"
+print len(filter(without_feature('total_payments'), pois))
+
