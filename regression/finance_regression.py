@@ -42,6 +42,8 @@ reg = linear_model.LinearRegression()
 reg.fit(feature_train, target_train)
 print 'Coef: {}'.format(reg.coef_)
 print 'Intercept: {}'.format(reg.intercept_)
+print 'Score Train: {}'.format(reg.score(feature_train, target_train))
+print 'Score Test: {}'.format(reg.score(feature_test, target_test))
 
 
 
