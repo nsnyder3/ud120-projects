@@ -40,8 +40,8 @@ test_color = "r"
 ### "r" to differentiate training points from test points.
 reg = linear_model.LinearRegression()
 reg.fit(feature_train, target_train)
-print 'Coef: {}'.format(reg.coef_)
-print 'Intercept: {}'.format(reg.intercept_)
+print 'Coef Train: {}'.format(reg.coef_)
+print 'Intercept Train: {}'.format(reg.intercept_)
 print 'Score Train: {}'.format(reg.score(feature_train, target_train))
 print 'Score Test: {}'.format(reg.score(feature_test, target_test))
 
@@ -68,9 +68,13 @@ plt.scatter(feature_test[0], target_test[0], color=train_color, label="train")
 
 ### draw the regression line, once it's coded
 try:
-    plt.plot( feature_test, reg.predict(feature_test) )
+    plt.plot( feature_test, reg.predict(feature_test), color="r")
 except NameError:
     pass
+reg.fit(feature_test, target_test)
+print 'Coef Test: {}'.format(reg.coef_)
+print 'Intercept Test: {}'.format(reg.intercept_)
+plt.plot(feature_train, reg.predict(feature_train), color="b")
 plt.xlabel(features_list[1])
 plt.ylabel(features_list[0])
 plt.legend()
