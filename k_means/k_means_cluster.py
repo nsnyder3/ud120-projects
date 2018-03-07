@@ -9,6 +9,7 @@
 
 import pickle
 import numpy
+from sklearn import cluster
 import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
@@ -58,12 +59,19 @@ poi, finance_features = targetFeatureSplit( data )
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
+'''
 for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
+'''
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+clf = cluster.KMeans(n_clusters=2)
+pred = clf.fit_predict(finance_features)
+
+
+
 
 
 
