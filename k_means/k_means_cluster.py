@@ -45,6 +45,14 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 data_dict.pop("TOTAL", 0)
 
 
+def get(func, feature):
+    data_without_nan = filter(lambda x : x[feature] != 'NaN', data_dict.values())
+    return func(data_without_nan, key=lambda x:x[feature])[feature]
+
+print 'Max exercised_stock_options: {}'.format(get(max, "exercised_stock_options"))
+print 'Min exercised_stock_options: {}'.format(get(min, "exercised_stock_options"))
+
+
 ### the input features we want to use 
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
