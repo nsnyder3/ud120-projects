@@ -51,6 +51,8 @@ def get(func, feature):
 
 print 'Max exercised_stock_options: {}'.format(get(max, "exercised_stock_options"))
 print 'Min exercised_stock_options: {}'.format(get(min, "exercised_stock_options"))
+print 'Max salary: {}'.format(get(max, "salary"))
+print 'Min salary: {}'.format(get(min, "salary"))
 
 
 ### the input features we want to use 
