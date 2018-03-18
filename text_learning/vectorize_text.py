@@ -5,6 +5,9 @@ import pickle
 import re
 import sys
 
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 sys.path.append( "../tools/" )
 from parse_out_email_text import parseOutText
 
@@ -66,7 +69,6 @@ print "emails processed"
 from_sara.close()
 from_chris.close()
 
-print word_data[152]
 pickle.dump( word_data, open("your_word_data.pkl", "w") )
 pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
@@ -77,3 +79,6 @@ pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 ### in Part 4, do TfIdf vectorization here
 
 
+vectorizor = TfidfVectorizer(stop_words="english")
+vectorizor.fit(word_data)
+print len(vectorizor.vocabulary_)
